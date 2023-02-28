@@ -1,0 +1,145 @@
+﻿<Page x:Class="WasteApp.pages.EditUsers"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:WasteApp.pages"
+      mc:Ignorable="d" 
+      d:DesignHeight="700" d:DesignWidth="600"
+      Title="EditUsers">
+
+    <Grid x:Name="MainGrid">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition MinWidth="400" Width="auto"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <ListView Grid.Column="1" Grid.Row="0" ItemsSource="{Binding DataSource}" Style="{StaticResource listBoxStyle}" x:Name="lvAllUsers" Height="300" Width="500" SelectionChanged="lvAllUsers_SelectionChanged">
+            <ListView.Resources>
+                <Style TargetType="{x:Type ListViewItem}">
+                    <Style.Triggers>
+                        <MultiTrigger>
+                            <MultiTrigger.Conditions>
+                                <Condition Property="IsSelected" Value="True"/>
+                            </MultiTrigger.Conditions>
+                            <MultiTrigger.Setters>
+                                <Setter Property="Background" Value="Black"/>
+                                <Setter Property="BorderBrush" Value="Black"/>
+                                <Setter Property="Foreground" Value="White"/>
+                            </MultiTrigger.Setters>
+                        </MultiTrigger>
+                    </Style.Triggers>
+                </Style>
+            </ListView.Resources>
+            <ListView.View>
+                <GridView AllowsColumnReorder="False">
+                    <GridViewColumn Header="User Name" DisplayMemberBinding="{Binding Path=name}"></GridViewColumn>
+                    <GridViewColumn Header="Active" >
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <CheckBox Margin="5,0" IsChecked="{Binding active}" IsHitTestVisible="False" Focusable="False"></CheckBox>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+                    <GridViewColumn Header="Is in use" >
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <CheckBox Margin="5,0" IsChecked="{Binding inUse}" IsHitTestVisible="False" Focusable="False"></CheckBox>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+                    <GridViewColumn Header="Email" DisplayMemberBinding="{Binding Path=email}" ></GridViewColumn>
+                </GridView>
+            </ListView.View>
+        </ListView>
+        <Border Style="{StaticResource borderStyle}" Grid.Row="1" Grid.Column="1">
+            <StackPanel Orientation="Horizontal">
+                <Border Style="{StaticResource borderStyle}">
+                    <Label Style="{StaticResource labelStyle}">User Name:</Label>
+                </Border>
+                <Border Style="{StaticResource borderStyle}">
+                    <TextBox x:Name="txUserName" Style="{StaticResource pageTextBox}" MinWidth="250">
+
+                    </TextBox>
+                </Border>
+            </StackPanel>
+        </Border>
+        <Border Style="{StaticResource borderStyle}" Grid.Row="2" Grid.Column="1">
+            <StackPanel Orientation="Horizontal">
+                <Border Style="{StaticResource borderStyle}">
+                    <Label Style="{StaticResource labelStyle}">Email :</Label>
+                </Border>
+                <Border Style="{StaticResource borderStyle}">
+                    <TextBox x:Name="txEmail" Style="{StaticResource pageTextBox}" MinWidth="305">
+                    </TextBox>
+                </Border>
+            </StackPanel>
+        </Border>
+        <Border Style="{StaticResource borderStyle}" Grid.Row="3" Grid.Column="1">
+            <StackPanel Orientation="Horizontal">
+                <Border Style="{StaticResource borderStyle}">
+                    <StackPanel>
+                        <Label Style="{StaticResource labelStyle}" FontSize="16">Set new</Label>
+                        <Label Style="{StaticResource labelStyle}" FontSize="16">password:</Label>
+                    </StackPanel>
+                </Border>
+                <Border Style="{StaticResource borderStyle}">
+                    <PasswordBox x:Name="txPassword" Style="{StaticResource pagePassword}" MinWidth="200">
+                    </PasswordBox>
+                </Border>
+                <Button x:Name="btnSetPassword" Style="{StaticResource form_button}" Click="SetNewPassword_Click">
+                    <TextBlock Style="{StaticResource top_menu_block}">Set New  Password</TextBlock>
+                </Button>
+            </StackPanel>
+        </Border>
+        <Border Style="{StaticResource borderStyle}" Grid.Row="4" Grid.Column="1">
+            <StackPanel Orientation="Horizontal">
+                <Border Style="{StaticResource borderStyle}">
+                    <StackPanel Orientation="Vertical">
+                        <StackPanel Orientation="Horizontal">
+                            <CheckBox x:Name="chkIsActive" Margin="5">
+                                
+                            </CheckBox>
+                            <Label Style="{StaticResource labelStyle}" FontSize="16">Is Active</Label>
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal">
+                            <CheckBox x:Name="chkIsInUse" Margin="5">
+
+                            </CheckBox>
+                            <Label Style="{StaticResource labelStyle}" FontSize="16">Is in use</Label>
+                        </StackPanel>
+                    </StackPanel>
+                </Border>
+                <Border Style="{StaticResource borderStyle}">
+                    <StackPanel Orientation="Vertical">
+                        <Label Style="{StaticResource labelStyle}" FontSize="16">User level</Label>
+                        <ComboBox x:Name="cboUserLevel" Style="{StaticResource pageCboBox}" Width="295">
+                        </ComboBox>
+                    </StackPanel>
+                </Border>
+            </StackPanel>
+        </Border>
+        <Border Style="{StaticResource borderStyle}" Grid.Row="5" Grid.Column="1">
+            <StackPanel HorizontalAlignment="Center" Orientation="Horizontal">
+                <Button Style="{StaticResource form_button}" MinWidth="110" x:Name="btnAddNewUser" Click="AddUser_Click">
+                    <TextBlock Style="{StaticResource top_menu_block}">Add New User</TextBlock>
+                </Button>
+                <Button Style="{StaticResource form_button}" MinWidth="110" x:Name="btnUpdateUser" Click="UpdateUser_Click">
+                    <TextBlock Style="{StaticResource top_menu_block}">Update User Info</TextBlock>
+                </Button>
+                <Button Style="{StaticResource form_button}" MinWidth="110" x:Name="btnRefresh" Click="Refresh_Click">
+                    <TextBlock Style="{StaticResource top_menu_block}">Refresh Page</TextBlock>
+                </Button>
+            </StackPanel>
+        </Border>
+    </Grid>
+</Page>

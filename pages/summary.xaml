@@ -1,0 +1,55 @@
+﻿<Page x:Class="WasteApp.pages.summary"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:WasteApp.pages"
+      mc:Ignorable="d" 
+      d:DesignHeight="800" d:DesignWidth="1200"
+      Title="Summary" Loaded="Page_Loaded" Unloaded="Page_Unloaded">
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="auto"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="auto"/>
+
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+          <Separator Visibility="Hidden" Width="40" Grid.Column="0" Margin="0,2,0,2"/>
+        <WpfPlot x:Name="summaryChart" Width="800" Height="400" Grid.Column="1" Grid.Row="1" />
+        <Label Style="{StaticResource labelStyle}" HorizontalAlignment="Center" Grid.Row="2" Grid.Column="1" Margin="0,10,0,0">Items to be disposed:</Label>
+
+        <ListView Style="{StaticResource listBoxStyle}" ItemsSource="{Binding DataSource}" x:Name="itemsForDisposal" Width="800" Height="400" Grid.Column="1" Grid.Row="3">
+            <ListView.Resources>
+                <Style TargetType="{x:Type ListViewItem}">
+                    <Style.Triggers>
+                        <DataTrigger Binding="{Binding closeToDisposalDate}" Value="true">
+                            <Setter Property="Background"  Value="Red" />
+                        </DataTrigger>
+                    </Style.Triggers>
+                </Style>
+            </ListView.Resources>
+            <ListView.View>
+                <GridView AllowsColumnReorder="False">
+                    <GridViewColumn Header="Last Date To Be Removed" DisplayMemberBinding="{Binding Path=dateToBeRemoved, StringFormat='{}{0:dd/MM/yyyy}'}" Width="auto"></GridViewColumn>
+                    <GridViewColumn Header="Tag Number" DisplayMemberBinding="{Binding Path=tagNo}" Width="auto"></GridViewColumn>
+                    <GridViewColumn Header="Isotope" DisplayMemberBinding="{Binding Path=isotopeSymbol}" Width="auto"></GridViewColumn>
+                    <GridViewColumn Header="Current Activity (Bq)" DisplayMemberBinding="{Binding Path=currentActivity, StringFormat=N}" Width="auto"></GridViewColumn>
+                    <GridViewColumn Header="Activity/Weight (Bq/g)" DisplayMemberBinding="{Binding Path=ActivtyPerGram, StringFormat=N}" Width="auto"></GridViewColumn>
+                </GridView>
+            </ListView.View>
+        </ListView>
+        <Separator Visibility="Hidden" Height="40" Grid.Row="4" Grid.Column="0" Margin="0,2,0,-42"/>
+
+
+
+    </Grid>
+</Page>

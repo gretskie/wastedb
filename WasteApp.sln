@@ -1,0 +1,29 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.4.33213.308
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WasteApp", "WasteApp.csproj", "{20458A3F-52E5-4656-84F3-EFAEB15EC001}"
+EndProject
+Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "WasteApp_Setup", "..\WasteApp_Setup\WasteApp_Setup.vdproj", "{66B08710-890B-443E-B22B-1487319E4ADF}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{20458A3F-52E5-4656-84F3-EFAEB15EC001}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{20458A3F-52E5-4656-84F3-EFAEB15EC001}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{20458A3F-52E5-4656-84F3-EFAEB15EC001}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{20458A3F-52E5-4656-84F3-EFAEB15EC001}.Release|Any CPU.Build.0 = Release|Any CPU
+		{66B08710-890B-443E-B22B-1487319E4ADF}.Debug|Any CPU.ActiveCfg = Debug
+		{66B08710-890B-443E-B22B-1487319E4ADF}.Release|Any CPU.ActiveCfg = Release
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {76E05EA9-83FE-4337-A5E2-A892422A8E71}
+	EndGlobalSection
+EndGlobal

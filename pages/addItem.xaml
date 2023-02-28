@@ -1,0 +1,81 @@
+﻿<Page x:Class="WasteApp.pages.addItem"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:WasteApp.pages"
+      xmlns:WACls="clr-namespace:WasteApp.classes"
+      mc:Ignorable="d" 
+      d:DesignHeight="800" d:DesignWidth="1000"
+      Title="addItem" Loaded="Page_Loaded">
+
+    <Grid x:Name="mainGrid">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="auto"/>
+            <ColumnDefinition Width="auto"/>
+            <ColumnDefinition Width="auto"/>
+            <ColumnDefinition Width="auto"/>
+            <ColumnDefinition Width="auto"/>
+            <ColumnDefinition Width="auto"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <Separator Visibility="Hidden" Width="100" Grid.Column="0"/>
+        <Separator Visibility="Hidden" Height="40" Grid.Column="0" Grid.Row="0"/>
+        <Label MinHeight="40" MinWidth="100" Grid.Row="1" Grid.Column="2" Style="{StaticResource labelStyle}" FontSize="48" Grid.ColumnSpan="2" VerticalContentAlignment="Center" HorizontalContentAlignment="Center"> Add new waste item</Label>
+        <Label MinHeight="40" MinWidth="100" Grid.Row="2" Grid.Column="1" Style="{StaticResource labelStyle}" HorizontalAlignment="Right" VerticalAlignment="Bottom">Date and time added (ref time) :</Label>
+        <WACls:DatePickerTimeSlider x:Name="DateTimePicker" Grid.Row="2" Grid.Column="3">
+
+        </WACls:DatePickerTimeSlider>
+        <!--<Border BorderBrush="White" BorderThickness="3" CornerRadius="5" Grid.Row="2" Grid.Column="3">
+            <StackPanel  Orientation="Horizontal">
+                <DatePicker x:Name="dateAdded" TabIndex="0" VerticalAlignment="Center" Style="{StaticResource pageDatePicker}" MinHeight="40" MinWidth="80" Grid.ColumnSpan="1" >
+                </DatePicker>
+                <Border BorderBrush="White" BorderThickness="3" CornerRadius="5">
+                    <StackPanel Orientation="Vertical">
+                        <Label Style="{StaticResource labelStyle}" HorizontalAlignment="Center" x:Name="timeAdded">00:00</Label>
+                        <ScrollBar x:Name="timeScroll" TabIndex="1" Orientation="Horizontal" Height="20" MinWidth="100" ValueChanged="time_valueChange" Value="0.50" SmallChange="0.001"></ScrollBar>
+                    </StackPanel>
+                </Border>
+            </StackPanel>
+        </Border>-->
+        <Label MinHeight="40" MinWidth="100" Grid.Row="3" Grid.Column="1" Style="{StaticResource labelStyle}" HorizontalAlignment="Right" VerticalAlignment="Bottom">Isotope :</Label>
+        <ComboBox x:Name="isotopeCbo" TabIndex="2" Style="{StaticResource pageCboBox}" Grid.Row="3" Grid.Column="2" MinHeight="40" MinWidth="400" Grid.ColumnSpan="2"  >
+
+        </ComboBox>
+        <Label MinHeight="40" MinWidth="100" Grid.Row="4" Grid.Column="1" Style="{StaticResource labelStyle}" HorizontalAlignment="Right" VerticalAlignment="Bottom">Tag code :</Label>
+        <TextBox x:Name="tagNo" TabIndex="3" Style="{StaticResource pageTextBox}" Grid.Row="4" Grid.Column="3" MinHeight="40" MinWidth="400" Grid.ColumnSpan="1" InputScope="Number">
+        </TextBox>
+        <Label MinHeight="40" MinWidth="100" Grid.Row="5" Grid.Column="1" Style="{StaticResource labelStyle}" HorizontalAlignment="Right" VerticalAlignment="Bottom">Activity :</Label>
+        <TextBox x:Name="activity" TabIndex="4" Style="{StaticResource pageTextBox}" Grid.Row="5" Grid.Column="3" MinHeight="40" MinWidth="400" Grid.ColumnSpan="1" InputScope="Number">
+        </TextBox>
+        <ComboBox x:Name="unit" Style="{StaticResource pageCboBox}" Width="80" Grid.Row="5" Grid.Column="4" MinHeight="40" InputScope="Number" HorizontalAlignment="Center" VerticalContentAlignment="Center" HorizontalContentAlignment="Center">
+        </ComboBox>
+        <Label MinHeight="40" MinWidth="100" Grid.Row="6" Grid.Column="1" Style="{StaticResource labelStyle}" HorizontalAlignment="Right" VerticalAlignment="Bottom">Weight (Kg) :</Label>
+        <TextBox x:Name="weight" TabIndex="5" ToolTip="Numbers only please" Style="{StaticResource pageTextBox}" Grid.Row="6" Grid.Column="3" MinHeight="40" MinWidth="400" Grid.ColumnSpan="1" InputScope="Number">
+        </TextBox>
+        <Label MinHeight="40" MinWidth="100" Grid.Row="7" Grid.Column="1" Style="{StaticResource labelStyle}" HorizontalAlignment="Right" VerticalAlignment="Bottom">Location :</Label>
+        <ComboBox x:Name="location" TabIndex="6" Style="{StaticResource pageCboBox}" Grid.Row="7" Grid.Column="2" MinHeight="40" MinWidth="400" Grid.ColumnSpan="2" InputScope="Number">
+
+        </ComboBox>
+        <Border Grid.Column="3" Grid.Row="8" BorderBrush="White" BorderThickness="2" MouseEnter="Border_MouseEnter" MouseLeave="Border_MouseLeave">
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" >
+                <Button Style="{StaticResource form_button}" TabIndex="7" Click="addItem_Click">Add New Item</Button>
+                <Button Style="{StaticResource form_button}" Click="resetForm_Click">Reset Form</Button>
+            </StackPanel>
+        </Border>
+
+    </Grid>
+</Page>
